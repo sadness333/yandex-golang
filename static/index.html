@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Calculator</span>
+    </nav>
+
+    <div class="input-group-append">
+        <button id="calculatorBtn" class="btn btn-outline-secondary" type="button" onclick="switchContent('calculator')">Calculator</button>
+        <button id="settingsBtn" class="btn btn-outline-secondary" type="button" onclick="switchContent('settings')">Calculator Settings</button>
+        <button id="emptyBtn" class="btn btn-outline-secondary" type="button" onclick="switchContent('resource')">Computer Resource</button>
+    </div>
+
+    <div id="calculatorContent" class="container mt-4">
+        <form id="calculatorForm" action="/addExpression" method="post">
+            <div class="row">
+                <div class="col-md-6 justify-content-start">
+                    <input type="text" id="expressionInput" name="expressionInput" class="form-control text-left" placeholder="Введите математическое выражение и нажмите ENTER">
+                </div>
+            </div>
+        </form>
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <h5>История выражений:</h5>
+                <ul id="taskList"></ul>
+            </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+
+
+
+    <div id="settingsContent" class="container mt-4" style="display: none;">
+        <div id="myDiv" class="settings">
+            <form id="myForm" action="/getOperations" method="post">
+                <label for="input1">Время выполнения операции + </label>
+                <input type="text" id="input1" name="input1"  oninput="validateInput(this)">
+        
+                <label for="input2">Время выполнения операции - </label>
+                <input type="text" id="input2" name="input2"  oninput="validateInput(this)">
+        
+                <label for="input3">Время выполнения операции * </label>
+                <input type="text" id="input3" name="input3"  oninput="validateInput(this)">
+        
+                <label for="input4">Время выполнения операции / </label>
+                <input type="text" id="input4" name="input4"  oninput="validateInput(this)">
+        
+                <label for="input5">Время отображения неактивного сервера</label>
+                <input type="text" id="input5" name="input5"  oninput="validateInput(this)">
+        
+                <button type="button" class="buttonOne" onclick="applyChanges()">Apply</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <div id="resourceContent" class="container mt-4" style="display: none;">
+        <!-- Content for Computer Resource -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="static/main.js"></script>
+
+</body>
+</html>
